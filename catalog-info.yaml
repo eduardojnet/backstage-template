@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Template
+metadata:
+  name: my-template
+  title: My Template
+  description: Template para criar novos repositórios a partir do Backstage
+  tags:
+    - starter
+    - github-template
+spec:
+  owner: default/team
+  type: service
+  path: ./template.yaml
+

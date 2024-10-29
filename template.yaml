@@ -1,0 +1,29 @@
+apiVersion: backstage.io/v1alpha1
+kind: Template
+metadata:
+  name: my-template
+spec:
+  owner: team/devops
+  type: service
+  parameters:
+    - title: Informações do Projeto
+      properties:
+        name:
+          title: Nome do Projeto
+          type: string
+        description:
+          title: Descrição do Projeto
+          type: string
+  steps:
+    - id: fetch-base
+      name: Buscar Template Base
+      action: fetch:template
+      input:
+        url: 'https://github.com/seu-usuario/backstage-template'
+        targetPath: './{{ parameters.name }}'
+    - id: publish
+      name: Publicar no GitHub
+      action: publish:github
+      input:
+        repoUrl: 'https://github.com/{{ parameters.name }}'
+        description: '{{ parameters.description }}'
