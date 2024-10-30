@@ -6,20 +6,20 @@ spec:
   owner: team/devops
   type: service
   parameters:
-    - title: Informações do Projeto
+    - title: Projeto BRQ - POC voltada ao uso de Backstage
       properties:
         name:
-          title: Nome do Projeto
+          title: BRQ_Backstage
           type: string
         description:
-          title: Descrição do Projeto
+          title: POC com objetivo de estruturar uma POC usando os serviços de Backstage.
           type: string
   steps:
     - id: fetch-base
       name: Buscar Template Base
       action: fetch:template
       input:
-        url: 'https://github.com/seu-usuario/backstage-template'
+        url: 'https://github.com/eduardojnet/backstage-template'
         targetPath: './{{ parameters.name }}'
     - id: publish
       name: Publicar no GitHub
