@@ -29,11 +29,11 @@ spec:
         packageName:
           title: Pacote Base
           type: string
-          description: Nome do pacote base (ex: com.suaempresa.microservico)
+          description: "Nome do pacote base (ex: com.suaempresa.microservico)"
         javaVersion:
           title: Versão do Java
           type: string
-          description: Versão do Java a ser usada
+          description: "Versão do Java a ser usada"
           enum:
             - 11
             - 17
