@@ -1,14 +1,51 @@
+# Definição do Template
 apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
   name: my-template
   title: My Template
   description: Template para criar novos repositórios a partir do Backstage
-  tags:
-    - starter
-    - github-template
 spec:
-  owner: default/team
+  owner: OWNER  # Define o grupo OWNER como proprietário do template
   type: service
   path: ./template.yaml
+  templater: cookiecutter
+  schema:
+    required:
+      - name
+    properties:
+      name:
+        title: Nome do Serviço
+        type: string
+
+---
+
+# Definição do Grupo GUESTS
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: guests
+  description: Grupo de usuários convidados
+spec:
+  type: team
+  profile:
+    displayName: Guests Group
+    email: guests-group@example.com
+  children:
+    - user-guest  # Referencia o usuário abaixo, que faz parte do grupo GUESTS
+
+---
+
+# Definição do Usuário GUEST
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: user-guest
+spec:
+  profile:
+    displayName: Guest User
+    email: guest.user@example.com
+  memberOf:
+    - guests  # Define que USER:GUEST é membro do grupo GROUP:GUESTS
+
 
