@@ -1,0 +1,75 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: springboot-microservice
+  title: Spring Boot Microservice
+  description: Template para criar um projeto de microserviço usando Spring Boot
+  tags:
+    - java
+    - spring
+    - microservice
+spec:
+  owner: sua-organizacao
+  type: service
+
+  parameters:
+    - title: Informações do projeto
+      required:
+        - name
+        - description
+      properties:
+        name:
+          title: Nome do Projeto
+          type: string
+          description: Nome do projeto a ser criado
+        description:
+          title: Descrição
+          type: string
+          description: Descrição do microserviço
+        packageName:
+          title: Pacote Base
+          type: string
+          description: Nome do pacote base (ex: com.suaempresa.microservico)
+        javaVersion:
+          title: Versão do Java
+          type: string
+          description: Versão do Java a ser usada
+          enum:
+            - 11
+            - 17
+            - 20
+
+  steps:
+    - id: Generate
+      name: Gerar estrutura do projeto
+      action: scaffolder:fetch:template
+      input:
+        url: './templates/springboot-basic-template'
+        values:
+          name: '{{ parameters.name }}'
+          packageName: '{{ parameters.packageName }}'
+          javaVersion: '{{ parameters.javaVersion }}'
+          description: '{{ parameters.description }}'
+
+    - id: publish
+      name: Publicar no GitHub
+      action: publish:github
+      input:
+        description: 'Projeto Spring Boot gerado automaticamente pelo Backstage'
+        repoUrl: 'github.com/{{ parameters.owner }}/{{ parameters.name }}'
+        defaultBranch: main
+        repoVisibility: public
+
+    - id: register
+      name: Registrar no catálogo do Backstage
+      action: catalog:register
+      input:
+        entity:
+          kind: Component
+          metadata:
+            name: '{{ parameters.name }}'
+            description: '{{ parameters.description }}'
+          spec:
+            type: service
+            lifecycle: production
+            owner: '{{ parameters.owner }}'
