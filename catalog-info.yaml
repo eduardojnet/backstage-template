@@ -1,3 +1,18 @@
+# Definição do Grupo brq
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: brq
+  description: Grupo BRQ
+spec:
+  type: team
+  profile:
+    displayName: BRQ Team
+    email: brq-team@example.com
+  children: []  # Lista vazia, caso não haja membros no grupo
+
+---
+
 # Definição do Grupo guesses
 apiVersion: backstage.io/v1alpha1
 kind: Group
