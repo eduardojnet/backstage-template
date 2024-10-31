@@ -35,9 +35,9 @@ spec:
           type: string
           description: "Versão do Java a ser usada"
           enum:
-            - 11
-            - 17
-            - 20
+            - "11"
+            - "17"
+            - "20"
 
   steps:
     - id: Generate
