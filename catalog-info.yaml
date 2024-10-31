@@ -1,14 +1,48 @@
-# Definição do Template
+# Definição do Grupo guesses
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: guesses
+  description: Grupo de usuários convidados
+spec:
+  type: team
+  profile:
+    displayName: Guests Group
+    email: guests-group@example.com
+  children:
+    - guest  # Adiciona o usuário guest como membro do grupo guesses
+
+---
+
+# Definição do Usuário guest
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: guest
+spec:
+  profile:
+    displayName: Guest User
+    email: guest.user@example.com
+  memberOf:
+    - guesses  # Define que o usuário guest é membro do grupo guesses
+
+---
+
+# Definição do Template para criação de novos serviços
 apiVersion: backstage.io/v1alpha1
 kind: Template
 metadata:
-  name: my-template
-  title: My Template
-  description: Template para criar novos repositórios a partir do Backstage
+  name: example-service-template
+  title: Example Service Template
+  description: Template para criar um novo serviço backend com Spring Boot
+  tags:
+    - java
+    - springboot
+    - microservices
 spec:
-  owner: OWNER  # Define o grupo OWNER como proprietário do template
+  owner: guesses  # Define o grupo guesses como o proprietário do template
   type: service
-  path: ./template.yaml
+  path: ./template.yaml  # Caminho para o arquivo do template
   templater: cookiecutter
   schema:
     required:
@@ -17,35 +51,3 @@ spec:
       name:
         title: Nome do Serviço
         type: string
-
----
-
-# Definição do Grupo GUESTS
-apiVersion: backstage.io/v1alpha1
-kind: Group
-metadata:
-  name: guests
-  description: Grupo de usuários convidados
-spec:
-  type: team
-  profile:
-    displayName: Guests Group
-    email: guests-group@example.com
-  children:
-    - user-guest  # Referencia o usuário abaixo, que faz parte do grupo GUESTS
-
----
-
-# Definição do Usuário GUEST
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: user-guest
-spec:
-  profile:
-    displayName: Guest User
-    email: guest.user@example.com
-  memberOf:
-    - guests  # Define que USER:GUEST é membro do grupo GROUP:GUESTS
-
-
