@@ -1,0 +1,13 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: BRQ
+  description: "Grupo BRQ"
+  namespace: default
+spec:
+  type: organization
+  profile:
+    displayName: "BRQ Digital Solutions"
+    email: "contato@brqq.com"
+  members:
+    - user:development/guest  # Ajuste para usuários membros, conforme necessário
