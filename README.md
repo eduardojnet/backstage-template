@@ -1,5 +1,5 @@
 
-# BRQ - POC com Backstage
+# POC com Backstage
 
 Este README documenta o processo que segui para explorar e compreender o Backstage em uma POC, com foco em entender sua estrutura interna, as integrações de IDP e GitHub, e o processo de criação de repositórios a partir de templates no catálogo.
 
