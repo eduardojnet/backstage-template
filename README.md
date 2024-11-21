@@ -135,7 +135,8 @@ A integração com IDP e GitHub foi simples e efetiva, permitindo autenticação
 
 Este processo foi enriquecedor e embora eu já tivesse conhecimento do uso da ferramenta pude rever e proporcionar novamente uma visão clara do funcionamento e potencial do Backstage. 
 Embora tenha enfrentado algumas dificuldades relativas à tratativas de IPD e, em especial acessos ao GITHUB, acredito que, ao compreender estes detalhes técnicos da configuração, da arquitetura e das integrações, estou mais preparado para explorar e implementar soluções utilizando o Backstage em projetos reais.
+
 =======
-Para mais informações, entre em contato com o administrador do Backstage da organização ou o time de desenvolvimento responsável.
-v1
+Para mais informações, entre em contato com o administrador do Backstage: eduardojnet@gmail.com
+
 >>>>>>> 33e1a91 (Subindo alteração backstate)
